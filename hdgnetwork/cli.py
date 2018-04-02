@@ -3,15 +3,20 @@
 """Console script for hdgnetwork."""
 import sys
 import click
+from .dns import Whois
 
 
 @click.command()
-def main(args=None):
+@click.option(
+        '-w',
+        '--whois',
+        type=click.STRING,
+        help='Whois')
+def main(whois):
     """Console script for hdgnetwork."""
-    click.echo("Replace this message by putting your code into "
-               "hdgnetwork.cli.main")
-    click.echo("See click documentation at http://click.pocoo.org/")
-    return 0
+    if whois:
+        who = Whois()
+        print(who.get_whois(whois))
 
 
 if __name__ == "__main__":
