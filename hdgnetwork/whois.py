@@ -16,6 +16,9 @@ class Whois():
         req = requests.get(rdap_url_request)
         output = json.loads(req.text)
 
+        if 'entities' not in output:
+            return None
+
         first_vcard = output['entities'][0]['vcardArray'][1]
         owner = ''
         addr = ''
