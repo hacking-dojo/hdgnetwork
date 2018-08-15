@@ -2,6 +2,8 @@
 import requests
 import json
 
+BASE_URL = 'https://rdap.arin.net/registry/ip/'
+
 
 class Whois():
 
@@ -10,7 +12,7 @@ class Whois():
 
     def get_from_ip(self, ip_str):
 
-        rdap_url_request = 'https://rdap.arin.net/registry/ip/' + str(ip_str)
+        rdap_url_request = BASE_URL + str(ip_str)
         req = requests.get(rdap_url_request)
         output = json.loads(req.text)
 
